@@ -1,0 +1,41 @@
+name: Add tense game music
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-tense-music.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add tense background music
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'id="musicBtn"' not in s:
+              s=s.replace('<title>GX English Adventure - Worlds 1 to 4</title>','<title>GX English Adventure - Worlds 1 to 15</title>')
+              s=s.replace('.shop-btn{border:0;', '.music-btn{border:0;border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#111827,#7c3aed);color:#fff;box-shadow:0 6px 14px #11182733}\\n.shop-btn{border:0;')
+              s=s.replace('<div class="pill">❤️ <span id="lives">3</span></div><button class="shop-btn" id="shopBtn">🐾 Pet Shop</button>', '<div class="pill">❤️ <span id="lives">3</span></div><button class="music-btn" id="musicBtn">🎵 Music ON</button><button class="shop-btn" id="shopBtn">🐾 Pet Shop</button>')
+              needle='const $=id=>document.getElementById(id),shuffle=a=>[...a].sort(()=>Math.random()-.5);'
+              add='''\nlet audioCtx=null,musicTimer=null,musicOn=true,musicStep=0;\nconst tenseNotes=[110,130.81,146.83,123.47,110,164.81,146.83,130.81];\nfunction playTenseNote(){\n if(!musicOn||!audioCtx)return;\n const now=audioCtx.currentTime;\n const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();\n osc.type=musicStep%4===0?"sawtooth":"triangle";\n osc.frequency.setValueAtTime(tenseNotes[musicStep%tenseNotes.length],now);\n gain.gain.setValueAtTime(0.0001,now);\n gain.gain.exponentialRampToValueAtTime(0.055,now+0.02);\n gain.gain.exponentialRampToValueAtTime(0.0001,now+0.28);\n osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.3);\n if(musicStep%4===0){\n  const bass=audioCtx.createOscillator(),bg=audioCtx.createGain();\n  bass.type="square";bass.frequency.value=55;\n  bg.gain.setValueAtTime(0.0001,now);bg.gain.exponentialRampToValueAtTime(0.025,now+0.02);bg.gain.exponentialRampToValueAtTime(0.0001,now+0.45);\n  bass.connect(bg);bg.connect(audioCtx.destination);bass.start(now);bass.stop(now+0.48);\n }\n musicStep++;\n}\nfunction startMusic(){\n if(!musicOn)return;\n if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();\n if(audioCtx.state==="suspended")audioCtx.resume();\n if(!musicTimer){playTenseNote();musicTimer=setInterval(playTenseNote,320)}\n}\nfunction stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}\nfunction toggleMusic(){\n musicOn=!musicOn;\n $("musicBtn").textContent=musicOn?"🎵 Music ON":"🔇 Music OFF";\n if(musicOn)startMusic();else stopMusic();\n}\n'''
+              s=s.replace(needle,needle+add)
+              s=s.replace('$("shopBtn").addEventListener("click",()=>{$("shopOverlay").style.display="flex";renderPetShop()});', '$("musicBtn").addEventListener("click",toggleMusic);\\n$("shopBtn").addEventListener("click",()=>{$("shopOverlay").style.display="flex";renderPetShop()});')
+              s=s.replace('function openWorld(id){\\n state.currentWorld=id;state.selected="rush";', 'function openWorld(id){\\n startMusic();\\n state.currentWorld=id;state.selected="rush";')
+              s=s.replace('function startMode(){state.index=0;', 'function startMode(){startMusic();state.index=0;')
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit updated game
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Add tense background music and music toggle"
+          git push
