@@ -71,441 +71,118 @@ button{font:inherit}.app{max-width:1200px;margin:auto;padding:14px}
 .fx-player{position:absolute;left:50%;bottom:18%;transform:translateX(-50%);font-size:clamp(80px,18vw,180px);filter:drop-shadow(0 14px 14px #0006)}
 .fx-monster{position:absolute;font-size:clamp(120px,28vw,280px);filter:drop-shadow(0 18px 18px #0007)}
 .fx-damage{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:clamp(65px,16vw,150px);animation:damagePop .8s ease-out forwards}
-@keyframes damagePop{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}35%{transform:translate(-50%,-50%) scale(1.35);opacity:1}100%{transform:translate(-50%,-50%) scale(.8);opacity:0}}
-.fx-heart{position:absolute;left:50%;top:66%;font-size:clamp(40px,9vw,90px);animation:heartDrop .9s ease-in forwards}
-@keyframes heartDrop{0%{transform:translate(-50%,0) scale(1);opacity:1}100%{transform:translate(-50%,180px) scale(.3) rotate(35deg);opacity:0}}
-.swallow-monster{right:-35%;bottom:4%;animation:swallowMove 1.15s ease-in-out forwards}
-@keyframes swallowMove{0%{right:-35%;transform:scale(.7)}45%{right:30%;transform:scale(1.25)}70%{right:22%;transform:scale(1.35)}100%{right:-45%;transform:scale(.8)}}
+@keyframes damagePop{0%{transform:translate(-50%,-50%) scale(.2)}45%{transform:translate(-50%,-50%) scale(1.35)}100%{opacity:0;transform:translate(-50%,-50%) scale(.8)}}
+.fx-heart{position:absolute;right:12%;top:18%;font-size:clamp(45px,9vw,95px);animation:heartBreak 1s ease-out forwards}
+@keyframes heartBreak{0%{transform:scale(.2)}45%{transform:scale(1.5) rotate(-12deg)}100%{opacity:0;transform:scale(.6) translateY(120px)}}
+.screen-shock{position:absolute;inset:0;background:#ef444455;animation:shock .5s ease-out forwards}
+@keyframes shock{0%{opacity:1}100%{opacity:0}}
+.swallow-monster{left:50%;top:34%;transform:translate(-50%,-50%);animation:monsterGrow 1.05s ease-in forwards}
 .swallowed-player{animation:swallowed 1.05s ease-in forwards}
-@keyframes swallowed{0%{transform:translateX(-50%) scale(1);opacity:1}55%{transform:translate(130px,-40px) scale(.55) rotate(18deg);opacity:1}100%{transform:translate(300px,-80px) scale(.05) rotate(120deg);opacity:0}}
-.fireball{position:absolute;left:-20%;top:42%;font-size:clamp(90px,20vw,190px);animation:fireHit .9s ease-in forwards}
-@keyframes fireHit{0%{left:-20%;transform:rotate(0)}65%{left:43%;transform:rotate(480deg)}100%{left:55%;transform:rotate(620deg);opacity:0}}
-.lightning{position:absolute;left:50%;top:-35%;transform:translateX(-50%);font-size:clamp(160px,38vw,360px);animation:lightningHit .7s ease-in forwards}
-@keyframes lightningHit{0%{top:-35%;opacity:0}25%{opacity:1}65%{top:18%}100%{top:30%;opacity:0}}
-.ice-prison{position:absolute;left:50%;bottom:11%;transform:translateX(-50%) scale(.1);font-size:clamp(130px,28vw,260px);animation:iceTrap 1s ease-out forwards}
-@keyframes iceTrap{40%{transform:translateX(-50%) scale(1.2)}75%{transform:translateX(-50%) scale(.95)}100%{transform:translateX(-50%) scale(1);opacity:0}}
-.trap-hole{position:absolute;left:50%;bottom:10%;transform:translateX(-50%) scaleX(.2);font-size:clamp(120px,26vw,250px);animation:trapOpen 1s ease-out forwards}
-@keyframes trapOpen{35%{transform:translateX(-50%) scaleX(1.2)}70%{transform:translateX(-50%) scaleX(1)}100%{opacity:0}}
-.fall-player{animation:fallDown 1s ease-in forwards}
-@keyframes fallDown{0%{bottom:18%;transform:translateX(-50%) rotate(0)}45%{bottom:23%;transform:translateX(-50%) rotate(-15deg)}100%{bottom:-30%;transform:translateX(-50%) rotate(180deg) scale(.4);opacity:0}}
-.knock-monster{left:-35%;bottom:8%;animation:knockMove .9s ease-in forwards}
-@keyframes knockMove{0%{left:-35%}55%{left:26%;transform:scale(1.2)}100%{left:45%;opacity:0}}
-.knocked-player{animation:knockedAway 1s ease-out forwards}
-@keyframes knockedAway{0%{transform:translateX(-50%) rotate(0)}100%{transform:translate(90vw,-50vh) rotate(760deg) scale(.3);opacity:0}}
-.screen-shock{position:absolute;inset:0;border:0 solid #ef4444;animation:shockBorder .7s ease-out forwards}
-@keyframes shockBorder{25%{border-width:35px;box-shadow:inset 0 0 70px #ef4444}100%{border-width:0;opacity:0}}
+@keyframes monsterGrow{0%{transform:translate(-50%,-50%) scale(.4)}60%{transform:translate(-50%,-50%) scale(1.25)}100%{transform:translate(-50%,-50%) scale(1.45)}}
+@keyframes swallowed{0%{transform:translateX(-50%) scale(1)}65%{bottom:39%;transform:translateX(-50%) scale(.55) rotate(8deg)}100%{bottom:48%;transform:translateX(-50%) scale(0);opacity:0}}
+.fireball{position:absolute;left:-15%;top:47%;font-size:clamp(80px,17vw,170px);animation:fireFly .85s ease-in forwards}
+@keyframes fireFly{to{left:48%;transform:rotate(540deg) scale(1.25)}}
+.lightning{position:absolute;left:50%;top:-25%;transform:translateX(-50%);font-size:clamp(180px,42vw,440px);animation:lightningHit .75s ease-in forwards}
+@keyframes lightningHit{55%{top:15%}100%{top:20%;opacity:0}}
+.ice-prison{position:absolute;left:50%;bottom:12%;transform:translateX(-50%) scale(.2);font-size:clamp(150px,33vw,340px);animation:iceGrow 1s ease-out forwards}
+@keyframes iceGrow{45%{transform:translateX(-50%) scale(1.3)}100%{transform:translateX(-50%) scale(1);opacity:.85}}
+.trap-hole{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);font-size:clamp(110px,24vw,250px)}
+.fall-player{animation:fallIn .9s ease-in forwards}
+@keyframes fallIn{65%{bottom:8%}100%{bottom:-22%;transform:translateX(-50%) scale(.3);opacity:0}}
+.knock-monster{left:-18%;bottom:16%;animation:knockCharge .9s ease-in forwards}
+@keyframes knockCharge{to{left:43%}}
+.knocked-player{animation:knocked 1s ease-out forwards}
+@keyframes knocked{55%{left:65%;bottom:32%;transform:translateX(-50%) rotate(35deg)}100%{left:118%;bottom:55%;transform:translateX(-50%) rotate(100deg);opacity:0}}
 
-
-.spelling-input{width:100%;font-size:28px;font-weight:900;text-align:center;padding:15px 16px;border:3px solid #c4b5fd;border-radius:17px;outline:none}
-.spelling-input:focus{border-color:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
-.spelling-submit{margin-top:12px}
-
-.music-btn{border:0;border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#111827,#7c3aed);color:#fff;box-shadow:0 6px 14px #0003}
-.music-btn.off{background:#64748b}
-
+.spelling-input{display:block;width:min(520px,100%);margin:18px auto 12px;border:4px solid #dbe4f0;border-radius:18px;padding:16px 18px;font-size:clamp(22px,4vw,34px);font-weight:900;text-align:center;outline:none;background:#fff;box-shadow:0 9px 18px #0001}
+.spelling-input:focus{border-color:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 14%,transparent)}
+.spelling-submit{width:min(300px,100%);display:block;margin:0 auto}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top">
-  <div><div class="brand">GX English Adventure</div><div class="sub">CEFR A1 Vocabulary Review · Worlds 1–25</div></div>
-  <div class="stats"><div class="pill">⭐ <span id="xp">0</span> XP</div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">💎 <span id="totalCrystals">0</span>/150</div><div class="pill">❤️ <span id="lives">3</span></div><button class="music-btn off" id="musicBtn">🔇 Music OFF</button><button class="shop-btn" id="shopBtn">🐾 Pet Shop</button></div>
-</header>
-
-<section id="worldScreen" class="world-screen">
-  <h1 style="margin:0">Choose a World</h1>
-  <div class="sub">World 1–25 已连接在同一个页面。</div>
-  <div id="worldGrid" class="world-grid"></div>
-</section>
-
-<section id="worldView" class="world-view">
-  <div class="map">
-    <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div>
-    <div class="hill"></div><div class="path"></div>
-    <div class="titlebox"><b id="mapTitle"></b><div class="sub" id="mapSub"></div></div>
-    <button class="back" id="backBtn">← Worlds</button>
-    <div class="stages">
-      <button class="stage active" data-stage="rush"><div class="ico">⚡</div><h3>Word Rush</h3><p>English → Chinese</p></button>
-      <button class="stage" data-stage="clue"><div class="ico">🔎</div><h3>Clue Quest</h3><p>Read and choose</p></button>
-      <button class="stage" data-stage="memory"><div class="ico">🧩</div><h3>Memory Match</h3><p>Match word pairs</p></button>
-      <button class="stage" data-stage="spell"><div class="ico">✍️</div><h3>Spelling Bridge</h3><p>Repair spellings</p></button>
-      <button class="stage" data-stage="speed"><div class="ico">🏃</div><h3>Speed Arena</h3><p>60-second challenge</p></button>
-      <button class="stage" data-stage="boss"><div class="ico">👑</div><h3>World Boss</h3><p>Final review</p></button>
-    </div>
-    <div class="hero"><div class="face"></div><div class="body"></div><div class="name">English Hero</div></div><div class="pet" id="pet">🐶</div>
+  <div class="top">
+    <div><div class="brand">GX English Adventure</div><div class="sub">15 Worlds · 6 Game Modes · Vocabulary Adventure</div></div>
+    <div class="stats"><div class="pill">XP <span id="xp">0</span></div><div class="pill">Coins <span id="coins">0</span></div><div class="pill">Lives <span id="lives">3</span></div><button id="shopBtn" class="shop-btn">Pet Shop</button><button id="musicBtn" class="shop-btn">Music: ON</button></div>
   </div>
-  <aside class="side">
-    <div class="card"><h2 id="stageTitle">Word Rush</h2><div id="stageDesc" class="sub">Answer random vocabulary questions.</div></div>
-    <div class="card"><h3>World Progress</h3><div class="progress"><div class="bar" id="worldBar"></div></div><div class="sub" style="display:flex;justify-content:space-between;margin-top:7px"><span id="worldText">0 / 6 stages</span><span id="crystalName">Crystal</span></div></div>
-    <button class="btn" id="playBtn">Play Word Rush</button>
-    <div class="card"><h3 id="wordCount"></h3><div id="wordGridSide" class="wordgrid"></div></div>
-    <div class="card sub" id="status">Every stage uses all vocabulary from the selected World.</div>
-  </aside>
-</section>
-</div>
-
-
-<div class="correct-fx" id="correctFx" aria-hidden="true"></div>
-<div class="wrong-fx" id="wrongFx" aria-hidden="true"></div>
-
-<div class="shop-overlay" id="shopOverlay">
-  <section class="shop-panel">
-    <div class="shop-head">
-      <div>
-        <h2 style="margin:0">Pet Shop</h2>
-        <div class="sub">Use your collected coins to unlock pets.</div>
+  <div id="worldScreen" class="world-screen"><h1>Choose a World</h1><p>Complete all 6 stages in each world.</p><div id="worldGrid" class="world-grid"></div></div>
+  <div id="worldView" class="world-view">
+    <div class="map"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="hill"></div><div class="path"></div><div class="titlebox"><b id="mapTitle"></b><div id="mapSub" class="sub"></div></div><button id="backBtn" class="back">Back</button>
+      <div class="stages">
+        <button class="stage active" data-stage="rush"><div class="ico">⚡</div><h3>Word Rush</h3><p>Quick meaning match</p></button>
+        <button class="stage" data-stage="clue"><div class="ico">🔎</div><h3>Clue Hunt</h3><p>Chinese clue to English</p></button>
+        <button class="stage" data-stage="memory"><div class="ico">🧠</div><h3>Memory Match</h3><p>Pair English and Chinese</p></button>
+        <button class="stage" data-stage="spell"><div class="ico">⌨️</div><h3>Spell Forge</h3><p>Type the full word</p></button>
+        <button class="stage" data-stage="speed"><div class="ico">⏱️</div><h3>Speed Trial</h3><p>Race through the words</p></button>
+        <button class="stage" data-stage="boss"><div class="ico">👾</div><h3>World Boss</h3><p>Defeat the boss</p></button>
       </div>
-      <button class="close" id="shopClose">×</button>
+      <div class="hero"><div class="face"></div><div class="body"></div><div class="name">GX HERO</div></div><div id="pet" class="pet">🐶</div>
     </div>
-    <div class="card" style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
-      <b>Your Coins</b><span class="pill">🪙 <span id="shopCoins">0</span></span>
-    </div>
-    <div class="pet-grid" id="petGrid"></div>
-  </section>
+    <div class="side"><div class="card"><h2 id="crystalName">Crystal</h2><div class="progress"><div id="worldBar" class="bar"></div></div><div id="worldText" class="sub">0 / 6 stages</div></div><div class="card"><h3 id="stageTitle">Word Rush</h3><p id="stageDesc"></p><button id="playBtn" class="btn">Play Word Rush</button></div><div class="card"><h3 id="wordCount"></h3><div id="wordGridSide" class="wordgrid"></div></div><div class="card"><b>Status</b><div id="status" class="sub">Ready.</div><div>Total Crystals: <span id="totalCrystals">0</span></div></div></div>
+  </div>
 </div>
-
-<div class="overlay" id="overlay">
-<section class="gamebox" id="gamebox">
-  <div class="gamehead"><div><b id="modeTitle">Word Rush</b><div class="sub">Question <span id="qnum">1</span></div></div><div style="display:flex;align-items:center;gap:10px"><span class="timer" id="timer"></span><button class="close" id="closeBtn">×</button></div></div>
-  <div id="bossWrap" style="display:none"><div class="sub">Boss HP</div><div class="bossbar"><div class="bosshp" id="bossHp"></div></div></div>
-  <div id="gameArea"></div><div class="feedback" id="feedback" aria-live="polite"></div>
-</section>
-</div>
-
+<div id="overlay" class="overlay"><div id="gamebox" class="gamebox"><div class="gamehead"><div><b id="modeTitle"></b><div id="qnum" class="sub"></div></div><div><span id="timer" class="timer"></span> <button id="closeBtn" class="close">×</button></div></div><div id="bossWrap" style="display:none"><div class="bossbar"><div id="bossHp" class="bosshp"></div></div></div><div id="gameArea"></div><div id="feedback" class="feedback"></div></div></div>
+<div id="correctFx" class="correct-fx"></div><div id="wrongFx" class="wrong-fx"></div>
+<div id="shopOverlay" class="shop-overlay"><div class="shop-panel"><div class="shop-head"><div><h2>Pet Shop</h2><div>Coins: <b id="shopCoins">0</b></div></div><button id="shopClose" class="close">×</button></div><div id="petGrid" class="pet-grid"></div></div></div>
 <script>
-
-let audioCtx=null;
-let musicOn=false;
-let bgmTimer=null;
-let bgmStep=0;
-
-function ensureAudio(){
-  if(!audioCtx){
-    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  }
-  if(audioCtx.state==="suspended") audioCtx.resume();
-}
-
-function tone(freq,duration=0.12,type="sine",volume=0.08,delay=0){
-  if(!musicOn)return;
-  ensureAudio();
-  const start=audioCtx.currentTime+delay;
-  const osc=audioCtx.createOscillator();
-  const gain=audioCtx.createGain();
-  osc.type=type;
-  osc.frequency.setValueAtTime(freq,start);
-  gain.gain.setValueAtTime(0.0001,start);
-  gain.gain.exponentialRampToValueAtTime(volume,start+0.015);
-  gain.gain.exponentialRampToValueAtTime(0.0001,start+duration);
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.start(start);
-  osc.stop(start+duration+0.03);
-}
-
-function noiseHit(duration=0.18,volume=0.08){
-  if(!musicOn)return;
-  ensureAudio();
-  const length=Math.max(1,Math.floor(audioCtx.sampleRate*duration));
-  const buffer=audioCtx.createBuffer(1,length,audioCtx.sampleRate);
-  const data=buffer.getChannelData(0);
-  for(let i=0;i<length;i++) data[i]=(Math.random()*2-1)*(1-i/length);
-  const source=audioCtx.createBufferSource();
-  const gain=audioCtx.createGain();
-  source.buffer=buffer;
-  gain.gain.value=volume;
-  source.connect(gain);
-  gain.connect(audioCtx.destination);
-  source.start();
-}
-
-function playScoreSound(){
-  tone(523.25,0.09,"square",0.07,0);
-  tone(659.25,0.09,"square",0.07,0.08);
-  tone(783.99,0.16,"triangle",0.08,0.16);
-}
-
-function playAttackSound(){
-  tone(220,0.08,"sawtooth",0.09,0);
-  tone(330,0.08,"sawtooth",0.09,0.06);
-  tone(493.88,0.16,"square",0.08,0.12);
-  noiseHit(0.12,0.06);
-}
-
-function playDamageSound(){
-  tone(180,0.12,"sawtooth",0.09,0);
-  tone(120,0.22,"square",0.08,0.09);
-  noiseHit(0.22,0.10);
-}
-
-function playBossSound(){
-  tone(110,0.20,"sawtooth",0.08,0);
-  tone(82.41,0.28,"square",0.07,0.16);
-}
-
-function bgmPulse(){
-  if(!musicOn)return;
-  const bass=[110,110,123.47,98,110,146.83,123.47,98];
-  const high=[220,246.94,261.63,293.66,220,329.63,293.66,246.94];
-  const i=bgmStep%bass.length;
-  tone(bass[i],0.32,"sawtooth",0.025,0);
-  if(i%2===0) tone(high[i],0.15,"triangle",0.018,0.04);
-  if(i===3||i===7) noiseHit(0.07,0.018);
-  bgmStep++;
-}
-
-function startBgm(){
-  if(!musicOn)return;
-  ensureAudio();
-  stopBgm();
-  bgmStep=0;
-  bgmPulse();
-  bgmTimer=setInterval(bgmPulse,360);
-}
-
-function stopBgm(){
-  if(bgmTimer){
-    clearInterval(bgmTimer);
-    bgmTimer=null;
-  }
-}
-
-function toggleMusic(){
-  musicOn=!musicOn;
-  const btn=document.getElementById("musicBtn");
-  if(btn){
-    btn.textContent=musicOn?"🔊 Music ON":"🔇 Music OFF";
-    btn.classList.toggle("off",!musicOn);
-  }
-  if(musicOn){
-    ensureAudio();
-    startBgm();
-  }else{
-    stopBgm();
-  }
-}
-
-
-const WORLDS={"people": {"title": "People Village", "subtitle": "World 1 · People Review", "icon": "👥", "color1": "#7c3aed", "color2": "#06b6d4", "words": [["actor", "男演员"], ["actress", "女演员"], ["adult", "成年人"], ["artist", "艺术家"], ["baby", "婴儿"], ["boy", "男孩"], ["boyfriend", "男朋友"], ["child", "小孩"], ["customer", "顾客"], ["dancer", "舞者"], ["doctor", "医生"], ["driver", "司机"], ["farmer", "农夫"], ["friend", "朋友"], ["girlfriend", "女朋友"], ["man", "男人"], ["member", "成员"], ["neighbour", "邻居"], ["nurse", "护士"], ["parent", "父母"], ["partner", "伴侣"], ["people", "人们"], ["person", "人"], ["player", "运动员"], ["policeman", "警察"], ["reader", "读者"], ["scientist", "科学家"], ["singer", "歌手"], ["student", "学生"], ["teacher", "老师"], ["teenager", "青少年"], ["tourist", "游客"], ["visitor", "访客"], ["waiter", "服务员"], ["worker", "工人"], ["writer", "作家"], ["woman", "女人"]]}, "family": {"title": "Family Home Valley", "subtitle": "World 2 · Family Review", "icon": "🏡", "color1": "#ec4899", "color2": "#8b5cf6", "words": [["aunt", "阿姨／姑妈"], ["brother", "兄弟"], ["cousin", "表兄弟姐妹"], ["dad", "爸爸"], ["daughter", "女儿"], ["family", "家庭"], ["father", "父亲"], ["grandfather", "爷爷／外公"], ["grandmother", "奶奶／外婆"], ["grandparent", "祖父母"], ["husband", "丈夫"], ["mother", "母亲"], ["mum", "妈妈"], ["sister", "姐妹"], ["son", "儿子"], ["uncle", "叔叔／舅舅"], ["wife", "妻子"]]}, "animals": {"title": "Animal Forest Island", "subtitle": "World 3 · Animals Review", "icon": "🐾", "color1": "#0f766e", "color2": "#22c55e", "words": [["animal", "动物"], ["bird", "鸟"], ["cat", "猫"], ["chicken", "鸡"], ["cow", "牛"], ["dog", "狗"], ["elephant", "大象"], ["fish", "鱼"], ["horse", "马"], ["lion", "狮子"], ["mouse", "老鼠"], ["pig", "猪"], ["rabbit", "兔子"], ["sheep", "羊"], ["snake", "蛇"]]}, "food": {"title": "Food & Drink Kingdom", "subtitle": "World 4 · Food & Drink Review", "icon": "🍽️", "color1": "#f97316", "color2": "#eab308", "words": [["apple", "苹果"], ["banana", "香蕉"], ["beer", "啤酒"], ["bread", "面包"], ["breakfast", "早餐"], ["butter", "黄油"], ["cake", "蛋糕"], ["carrot", "胡萝卜"], ["cheese", "奶酪"], ["chicken", "鸡肉"], ["chocolate", "巧克力"], ["coffee", "咖啡"], ["cream", "奶油"], ["dinner", "晚餐"], ["egg", "鸡蛋"], ["fish", "鱼"], ["food", "食物"], ["fruit", "水果"], ["ice cream", "冰淇淋"], ["juice", "果汁"], ["lunch", "午餐"], ["meat", "肉"], ["milk", "牛奶"], ["onion", "洋葱"], ["orange", "橙子"], ["pasta", "意大利面"], ["pepper", "胡椒"], ["pizza", "披萨"], ["potato", "土豆"], ["rice", "米饭"], ["salad", "沙拉"], ["salt", "盐"], ["sandwich", "三明治"], ["soup", "汤"], ["sugar", "糖"], ["tea", "茶"], ["tomato", "西红柿"], ["vegetable", "蔬菜"], ["water", "水"], ["wine", "葡萄酒"]]}, "school": {"title": "School Castle", "subtitle": "World 5 · School Review", "icon": "🏫", "color1": "#2563eb", "color2": "#14b8a6", "words": [["book", "书"], ["class", "班级"], ["classroom", "教室"], ["college", "学院"], ["computer", "电脑"], ["course", "课程"], ["desk", "书桌"], ["dictionary", "字典"], ["exam", "考试"], ["homework", "作业"], ["language", "语言"], ["lesson", "课"], ["library", "图书馆"], ["map", "地图"], ["page", "页"], ["paper", "纸"], ["pen", "钢笔"], ["pencil", "铅笔"], ["project", "项目"], ["question", "问题"], ["school", "学校"], ["science", "科学"], ["sentence", "句子"], ["spelling", "拼写"], ["student", "学生"], ["study", "学习"], ["teacher", "老师"], ["test", "测试"], ["university", "大学"], ["word", "单词"], ["writing", "写作"]]}, "transport": {"title": "Transport City", "subtitle": "World 6 · Transport Review", "icon": "🚆", "color1": "#0ea5e9", "color2": "#f97316", "words": [["airport", "机场"], ["bicycle", "自行车"], ["bike", "自行车"], ["boat", "船"], ["bus", "公交车"], ["car", "汽车"], ["flight", "航班"], ["journey", "旅程"], ["plane", "飞机"], ["road", "道路"], ["station", "车站"], ["taxi", "出租车"], ["ticket", "票"], ["traffic", "交通"], ["train", "火车"], ["travel", "旅行"], ["trip", "旅行"]]}, "places": {"title": "Places Kingdom", "subtitle": "World 7 · Places Review", "icon": "🏙️", "color1": "#0f766e", "color2": "#8b5cf6", "words": [["apartment", "公寓"], ["bank", "银行"], ["beach", "海滩"], ["cafe", "咖啡馆"], ["cinema", "电影院"], ["city", "城市"], ["country", "国家"], ["farm", "农场"], ["garden", "花园"], ["gym", "体育馆"], ["hospital", "医院"], ["hotel", "酒店"], ["house", "房子"], ["kitchen", "厨房"], ["market", "市场"], ["museum", "博物馆"], ["office", "办公室"], ["park", "公园"], ["restaurant", "餐厅"], ["room", "房间"], ["school", "学校"], ["shop", "商店"], ["supermarket", "超市"], ["theatre", "剧院"], ["toilet", "厕所"], ["town", "城镇"], ["village", "村庄"]]}, "colours": {"title": "Rainbow Colour Land", "subtitle": "World 8 · Colours Review", "icon": "🌈", "color1": "#db2777", "color2": "#7c3aed", "words": [["black", "黑色"], ["blue", "蓝色"], ["brown", "棕色"], ["green", "绿色"], ["grey", "灰色"], ["orange", "橙色"], ["pink", "粉色"], ["purple", "紫色"], ["red", "红色"], ["white", "白色"], ["yellow", "黄色"]]}, "clothes": {"title": "Clothes Kingdom", "subtitle": "World 9 · Clothes Review", "icon": "👕", "color1": "#0f766e", "color2": "#ec4899", "words": [["bag", "包包"], ["belt", "皮带"], ["boot", "靴子"], ["cap", "帽子"], ["coat", "外套"], ["dress", "连衣裙"], ["glove", "手套"], ["hat", "帽子"], ["jacket", "夹克"], ["jeans", "牛仔裤"], ["shirt", "衬衫"], ["shoe", "鞋子"], ["shorts", "短裤"], ["skirt", "裙子"], ["sock", "袜子"], ["sweater", "毛衣"], ["T-shirt", "T恤"], ["tie", "领带"], ["trousers", "长裤"], ["watch", "手表"]]}, "weather": {"title": "Weather Mountain", "subtitle": "World 10 · Weather Review", "icon": "🌤️", "color1": "#0284c7", "color2": "#f59e0b", "words": [["cloud", "云"], ["cloudy", "多云"], ["cold", "寒冷"], ["cool", "凉爽"], ["dry", "干燥"], ["fog", "雾"], ["foggy", "有雾"], ["hot", "炎热"], ["ice", "冰"], ["rain", "雨"], ["rainy", "下雨"], ["sky", "天空"], ["snow", "雪"], ["storm", "暴风雨"], ["sun", "太阳"], ["sunny", "晴天"], ["warm", "温暖"], ["weather", "天气"], ["wet", "潮湿"], ["wind", "风"], ["windy", "有风"]]}, "numbers": {"title": "Number Kingdom", "subtitle": "World 11 · Numbers Review", "icon": "🔢", "color1": "#7c3aed", "color2": "#22c55e", "words": [["zero", "零"], ["one", "一"], ["two", "二"], ["three", "三"], ["four", "四"], ["five", "五"], ["six", "六"], ["seven", "七"], ["eight", "八"], ["nine", "九"], ["ten", "十"], ["eleven", "十一"], ["twelve", "十二"], ["thirteen", "十三"], ["fourteen", "十四"], ["fifteen", "十五"], ["sixteen", "十六"], ["seventeen", "十七"], ["eighteen", "十八"], ["nineteen", "十九"], ["twenty", "二十"]]}, "time": {"title": "Time Tower", "subtitle": "World 12 · Time Review", "icon": "🕒", "color1": "#2563eb", "color2": "#9333ea", "words": [["clock", "时钟"], ["day", "天"], ["hour", "小时"], ["minute", "分钟"], ["month", "月份"], ["morning", "早上"], ["afternoon", "下午"], ["evening", "傍晚"], ["night", "夜晚"], ["today", "今天"], ["tomorrow", "明天"], ["yesterday", "昨天"], ["week", "星期"], ["weekend", "周末"], ["year", "年份"], ["time", "时间"], ["o'clock", "点钟"], ["Monday", "星期一"], ["Tuesday", "星期二"], ["Wednesday", "星期三"], ["Thursday", "星期四"], ["Friday", "星期五"], ["Saturday", "星期六"], ["Sunday", "星期日"]]}, "body": {"title": "Body Fortress", "subtitle": "World 13 · Body Review", "icon": "🧍", "color1": "#dc2626", "color2": "#f59e0b", "words": [["arm", "手臂"], ["back", "背部"], ["body", "身体"], ["ear", "耳朵"], ["eye", "眼睛"], ["face", "脸"], ["finger", "手指"], ["foot", "脚"], ["hair", "头发"], ["hand", "手"], ["head", "头"], ["leg", "腿"], ["mouth", "嘴巴"], ["neck", "脖子"], ["nose", "鼻子"], ["shoulder", "肩膀"], ["stomach", "肚子"], ["tooth", "牙齿"], ["teeth", "牙齿（复数）"]]}, "verbs": {"title": "Action Valley", "subtitle": "World 14 · Action Verbs", "icon": "🏃", "color1": "#16a34a", "color2": "#2563eb", "words": [["ask", "询问"], ["come", "来"], ["cook", "烹饪"], ["dance", "跳舞"], ["drink", "喝"], ["eat", "吃"], ["go", "去"], ["jump", "跳"], ["listen", "听"], ["look", "看"], ["play", "玩"], ["read", "阅读"], ["run", "跑"], ["sing", "唱歌"], ["sit", "坐"], ["sleep", "睡觉"], ["speak", "说"], ["stand", "站"], ["swim", "游泳"], ["walk", "走路"], ["watch", "观看"], ["write", "写"]]}, "adjectives": {"title": "Adjective Peak", "subtitle": "World 15 · Adjectives", "icon": "⭐", "color1": "#7c3aed", "color2": "#f97316", "words": [["big", "大"], ["small", "小"], ["long", "长"], ["short", "短"], ["tall", "高"], ["young", "年轻"], ["old", "老"], ["new", "新的"], ["good", "好的"], ["bad", "坏的"], ["happy", "开心"], ["sad", "伤心"], ["fast", "快"], ["slow", "慢"], ["clean", "干净"], ["dirty", "肮脏"], ["easy", "容易"], ["difficult", "困难"], ["strong", "强壮"], ["weak", "虚弱"], ["beautiful", "美丽"], ["ugly", "丑"]]}, "home": {"title": "Home Life Kingdom", "subtitle": "World 16 · Home Life Review", "icon": "🏠", "color1": "#14b8a6", "color2": "#f97316", "words": [["bathroom", "浴室"], ["bed", "床"], ["bedroom", "卧室"], ["chair", "椅子"], ["cup", "杯子"], ["door", "门"], ["floor", "地板"], ["fridge", "冰箱"], ["home", "家"], ["house", "房子"], ["key", "钥匙"], ["lamp", "灯"], ["mirror", "镜子"], ["picture", "图片"], ["plate", "盘子"], ["sofa", "沙发"], ["table", "桌子"], ["television", "电视"], ["wall", "墙"], ["window", "窗户"]]}, "daily": {"title": "Daily Routine City", "subtitle": "World 17 · Daily Routine Review", "icon": "⏰", "color1": "#2563eb", "color2": "#f59e0b", "words": [["brush", "刷"], ["clean", "清理"], ["dress", "穿衣"], ["finish", "完成"], ["get up", "起床"], ["go home", "回家"], ["go to bed", "上床睡觉"], ["go to school", "去学校"], ["have breakfast", "吃早餐"], ["have dinner", "吃晚餐"], ["have lunch", "吃午餐"], ["help", "帮助"], ["leave", "离开"], ["make", "制作"], ["start", "开始"], ["study", "学习"], ["take a shower", "洗澡"], ["wake up", "醒来"], ["wash", "清洗"], ["work", "工作"]]}, "hobbies": {"title": "Sports & Hobbies Arena", "subtitle": "World 18 · Sports & Hobbies Review", "icon": "⚽", "color1": "#16a34a", "color2": "#7c3aed", "words": [["badminton", "羽毛球"], ["basketball", "篮球"], ["cycling", "骑自行车"], ["drawing", "画画"], ["football", "足球"], ["game", "游戏"], ["hobby", "爱好"], ["music", "音乐"], ["painting", "绘画"], ["photography", "摄影"], ["playing chess", "下棋"], ["reading", "阅读"], ["running", "跑步"], ["singing", "唱歌"], ["sport", "运动"], ["swimming", "游泳"], ["table tennis", "乒乓球"], ["tennis", "网球"], ["walking", "散步"], ["watching television", "看电视"]]}, "nature": {"title": "Nature Forest", "subtitle": "World 19 · Nature Review", "icon": "🌿", "color1": "#15803d", "color2": "#0ea5e9", "words": [["beach", "海滩"], ["cloud", "云"], ["earth", "地球"], ["field", "田野"], ["flower", "花"], ["forest", "森林"], ["grass", "草"], ["hill", "山丘"], ["island", "岛屿"], ["lake", "湖"], ["moon", "月亮"], ["mountain", "山"], ["nature", "大自然"], ["plant", "植物"], ["river", "河流"], ["sea", "海"], ["sky", "天空"], ["star", "星星"], ["sun", "太阳"], ["tree", "树"], ["water", "水"], ["world", "世界"]]}, "jobs": {"title": "Career City", "subtitle": "World 20 · Jobs Review", "icon": "👨‍💼", "color1": "#2563eb", "color2": "#dc2626", "words": [["actor", "演员"], ["artist", "艺术家"], ["chef", "厨师"], ["dentist", "牙医"], ["doctor", "医生"], ["driver", "司机"], ["engineer", "工程师"], ["farmer", "农夫"], ["firefighter", "消防员"], ["job", "工作"], ["lawyer", "律师"], ["manager", "经理"], ["mechanic", "修理工"], ["nurse", "护士"], ["office worker", "办公室职员"], ["pilot", "飞行员"], ["police officer", "警察"], ["teacher", "老师"], ["veterinarian", "兽医"], ["waiter", "服务员"], ["worker", "工人"]]}, "health": {"title": "Health Rescue Center", "subtitle": "World 21 · Health Review", "icon": "🏥", "color1": "#dc2626", "color2": "#06b6d4", "words": [["ache", "疼痛"], ["ambulance", "救护车"], ["blood", "血液"], ["cold", "感冒"], ["cough", "咳嗽"], ["dentist", "牙医"], ["doctor", "医生"], ["exercise", "运动"], ["fever", "发烧"], ["headache", "头痛"], ["health", "健康"], ["healthy", "健康的"], ["hospital", "医院"], ["hurt", "受伤"], ["medicine", "药"], ["nurse", "护士"], ["pain", "疼痛"], ["rest", "休息"], ["sick", "生病的"], ["stomachache", "肚子痛"], ["toothache", "牙痛"]]}, "shopping": {"title": "Shopping Mall", "subtitle": "World 22 · Shopping Review", "icon": "🛍️", "color1": "#db2777", "color2": "#f59e0b", "words": [["buy", "购买"], ["cash", "现金"], ["change", "找钱"], ["cheap", "便宜的"], ["clothes", "衣服"], ["cost", "花费"], ["customer", "顾客"], ["expensive", "昂贵的"], ["market", "市场"], ["money", "钱"], ["pay", "付款"], ["price", "价格"], ["receipt", "收据"], ["sale", "促销"], ["sell", "售卖"], ["shop", "商店"], ["shopping", "购物"], ["size", "尺码"], ["store", "商店"], ["supermarket", "超市"], ["wallet", "钱包"]]}, "technology": {"title": "Technology Lab", "subtitle": "World 23 · Technology Review", "icon": "💻", "color1": "#2563eb", "color2": "#7c3aed", "words": [["app", "应用程序"], ["camera", "相机"], ["computer", "电脑"], ["email", "电子邮件"], ["internet", "互联网"], ["keyboard", "键盘"], ["laptop", "手提电脑"], ["message", "信息"], ["mobile phone", "手机"], ["mouse", "鼠标"], ["online", "线上"], ["password", "密码"], ["photo", "照片"], ["printer", "打印机"], ["screen", "屏幕"], ["tablet", "平板电脑"], ["technology", "科技"], ["telephone", "电话"], ["video", "视频"], ["website", "网站"], ["wifi", "无线网络"]]}, "travel": {"title": "Travel Adventure", "subtitle": "World 24 · Travel Review", "icon": "✈️", "color1": "#0ea5e9", "color2": "#f59e0b", "words": [["airport", "机场"], ["bus", "巴士"], ["holiday", "假期"], ["hotel", "酒店"], ["journey", "旅程"], ["map", "地图"], ["passport", "护照"], ["plane", "飞机"], ["station", "车站"], ["suitcase", "行李箱"], ["taxi", "德士"], ["ticket", "票"], ["tour", "旅游"], ["tourist", "游客"], ["train", "火车"], ["travel", "旅行"], ["trip", "旅行"], ["visit", "参观"], ["village", "村庄"], ["city", "城市"], ["country", "国家"]]}, "final": {"title": "A1 Final Boss Castle", "subtitle": "World 25 · Complete A1 Review", "icon": "🏰", "color1": "#111827", "color2": "#7c3aed", "words": [["teacher", "老师"], ["family", "家庭"], ["elephant", "大象"], ["breakfast", "早餐"], ["dictionary", "字典"], ["airport", "机场"], ["hospital", "医院"], ["purple", "紫色"], ["jacket", "夹克"], ["storm", "暴风雨"], ["seventeen", "十七"], ["Wednesday", "星期三"], ["shoulder", "肩膀"], ["swim", "游泳"], ["difficult", "困难"], ["bedroom", "卧室"], ["wake up", "醒来"], ["badminton", "羽毛球"], ["mountain", "山"], ["engineer", "工程师"], ["medicine", "药"], ["receipt", "收据"], ["password", "密码"], ["passport", "护照"], ["restaurant", "餐厅"], ["vegetable", "蔬菜"], ["computer", "电脑"], ["tourist", "游客"], ["beautiful", "美丽"], ["toothache", "牙痛"]]}};
-const PETS={people:"🐶",family:"🐰",animals:"🐱",food:"🐹",school:"🦉",transport:"🐼",places:"🦊",colours:"🦄",clothes:"🦁",weather:"🦅",numbers:"🐲",time:"🦉",body:"🐵",verbs:"🦖",adjectives:"🦋",home:"🐨",daily:"🐔",hobbies:"🐯",nature:"🦌",jobs:"🦅",health:"🐻",shopping:"🦝",technology:"🤖",travel:"🦜",final:"🐉"};
-const state={xp:0,coins:0,lives:3,currentWorld:null,selected:"rush",completed:{people:new Set(),family:new Set(),animals:new Set(),food:new Set(),school:new Set(),transport:new Set(),places:new Set(),colours:new Set(),clothes:new Set(),weather:new Set(),numbers:new Set(),time:new Set(),body:new Set(),verbs:new Set(),adjectives:new Set(),home:new Set(),daily:new Set(),hobbies:new Set(),nature:new Set(),jobs:new Set(),health:new Set(),shopping:new Set(),technology:new Set(),travel:new Set(),final:new Set()},index:0,questions:[],locked:false,timer:null,time:0,bossHP:100,score:0,wrongLog:[],ownedPets:new Set(["dog"]),equippedPet:"dog"};
-const modes={rush:["Word Rush","Complete every word in this World: English → Chinese."],clue:["Clue Quest","Complete every word in this World: Chinese → English."],memory:["Memory Match","Match every English word with its Chinese meaning."],spell:["Spelling Bridge","Complete the spelling of every word in this World."],speed:["Speed Arena","Clear every word as quickly as possible."],boss:["World Boss","Defeat the boss by answering every word in this World."]};
 const $=id=>document.getElementById(id),shuffle=a=>[...a].sort(()=>Math.random()-.5);
-
-const PET_SHOP=[
- {id:"dog",name:"Buddy Dog",emoji:"🐶",price:0},
- {id:"rabbit",name:"Moon Rabbit",emoji:"🐰",price:250},
- {id:"cat",name:"Shadow Cat",emoji:"🐱",price:400},
- {id:"panda",name:"Lucky Panda",emoji:"🐼",price:650},
- {id:"fox",name:"Fire Fox",emoji:"🦊",price:900},
- {id:"unicorn",name:"Rainbow Unicorn",emoji:"🦄",price:1300},
- {id:"dragon",name:"Sky Dragon",emoji:"🐉",price:1800},
- {id:"phoenix",name:"Golden Phoenix",emoji:"🔥",price:2400},
- {id:"tiger",name:"Thunder Tiger",emoji:"🐯",price:3000}
-];
-const CORRECT_EFFECTS=[
- {title:"DRAGON POWER!",creature:"🐉",particles:["🔥","✨","💥"]},
- {title:"PHOENIX BURST!",creature:"🦅",particles:["🔥","⭐","✨"]},
- {title:"THUNDER STRIKE!",creature:"⚡",particles:["⚡","💥","✨"]},
- {title:"TIGER ROAR!",creature:"🐯",particles:["💥","⭐","🔥"]},
- {title:"UNICORN MAGIC!",creature:"🦄",particles:["🌈","✨","⭐"]},
- {title:"PERFECT COMBO!",creature:"💎",particles:["💎","⭐","✨"]}
-];
-
-const WRONG_EFFECTS=[
- {id:"swallow",title:"MONSTER SWALLOWED YOU!"},
- {id:"fire",title:"FIREBALL HIT!"},
- {id:"lightning",title:"THUNDER DAMAGE!"},
- {id:"ice",title:"FROZEN!"},
- {id:"trap",title:"TRAP ACTIVATED!"},
- {id:"knock",title:"KNOCKED AWAY!"}
-];
-function showWrongEffect(){
- const fx=$("wrongFx");
- const e=WRONG_EFFECTS[Math.floor(Math.random()*WRONG_EFFECTS.length)];
- let scene='<div class="screen-shock"></div><div class="wrong-title">'+e.title+'</div><div class="fx-heart">💔</div>';
- if(e.id==="swallow"){
-   scene+='<div class="fx-player swallowed-player">🧑</div><div class="fx-monster swallow-monster">👾</div>';
- }else if(e.id==="fire"){
-   scene+='<div class="fx-player">🧑</div><div class="fireball">🔥</div><div class="fx-damage">💥</div>';
- }else if(e.id==="lightning"){
-   scene+='<div class="fx-player">🧑</div><div class="lightning">⚡</div><div class="fx-damage">💫</div>';
- }else if(e.id==="ice"){
-   scene+='<div class="fx-player">🧑</div><div class="ice-prison">🧊</div>';
- }else if(e.id==="trap"){
-   scene+='<div class="trap-hole">🕳️</div><div class="fx-player fall-player">🧑</div>';
- }else{
-   scene+='<div class="fx-monster knock-monster">🦬</div><div class="fx-player knocked-player">🧑</div><div class="fx-damage">💥</div>';
- }
- fx.innerHTML=scene;
- fx.classList.remove("show");void fx.offsetWidth;fx.classList.add("show");
- setTimeout(()=>{fx.classList.remove("show");fx.innerHTML=""},1250);
-}
-
-function equippedEmoji(){
- const pet=PET_SHOP.find(p=>p.id===state.equippedPet);
- return pet?pet.emoji:"🐶";
-}
-function showCorrectEffect(){
- const fx=$("correctFx");
- const e=CORRECT_EFFECTS[Math.floor(Math.random()*CORRECT_EFFECTS.length)];
- fx.innerHTML='<div class="fx-flash"></div><div class="fx-ring"></div><div class="fx-title">'+e.title+'</div><div class="fx-creature">'+e.creature+'</div>';
- for(let i=0;i<18;i++){
-   const p=document.createElement("div");
-   p.className="fx-particle";
-   p.textContent=e.particles[i%e.particles.length];
-   p.style.left=(45+Math.random()*10)+"%";
-   p.style.top=(42+Math.random()*16)+"%";
-   p.style.setProperty("--dx",((Math.random()-.5)*900)+"px");
-   p.style.setProperty("--dy",((Math.random()-.5)*650)+"px");
-   fx.appendChild(p);
- }
- fx.classList.remove("show");void fx.offsetWidth;fx.classList.add("show");
- setTimeout(()=>{fx.classList.remove("show");fx.innerHTML=""},1100);
-}
-function renderPetShop(){
- $("shopCoins").textContent=state.coins;
- $("petGrid").innerHTML="";
- PET_SHOP.forEach(p=>{
-   const owned=state.ownedPets.has(p.id),equipped=state.equippedPet===p.id;
-   const card=document.createElement("div");
-   card.className="pet-card"+(owned?" owned":"")+(equipped?" equipped":"");
-   const label=equipped?"Equipped":owned?"Equip":"Buy";
-   card.innerHTML=`<div class="pet-emoji">${p.emoji}</div><div class="pet-name">${p.name}</div><div class="pet-price">${p.price===0?"Starter Pet":"🪙 "+p.price}</div><button class="pet-action" ${equipped?"disabled":""}>${label}</button>`;
-   card.querySelector("button").addEventListener("click",()=>{
-     if(owned){
-       state.equippedPet=p.id;
-       $("pet").textContent=p.emoji;
-       renderPetShop();
-       $("status").textContent=p.name+" is now following you.";
-     }else if(state.coins>=p.price){
-       state.coins-=p.price;
-       state.ownedPets.add(p.id);
-       state.equippedPet=p.id;
-       $("pet").textContent=p.emoji;
-       sync();
-       renderPetShop();
-       showCorrectEffect();
-       $("status").textContent="Unlocked "+p.name+"!";
-     }else{
-       $("status").textContent="Not enough coins for "+p.name+".";
-       const btn=card.querySelector("button");
-       btn.textContent="Need "+(p.price-state.coins)+" more";
-       setTimeout(renderPetShop,900);
-     }
-   });
-   $("petGrid").appendChild(card);
- });
-}
-$("shopBtn").addEventListener("click",()=>{$("shopOverlay").style.display="flex";renderPetShop()});
-$("shopClose").addEventListener("click",()=>{$("shopOverlay").style.display="none"});
-$("shopOverlay").addEventListener("click",e=>{if(e.target===$("shopOverlay"))$("shopOverlay").style.display="none"});
-
-function current(){return WORLDS[state.currentWorld]} function words(){return current().words}
-function totalDone(){return Object.values(state.completed).reduce((n,s)=>n+s.size,0)}
-function sync(){
- $("xp").textContent=state.xp;$("coins").textContent=state.coins;$("lives").textContent=state.lives;$("totalCrystals").textContent=totalDone();if($("shopCoins"))$("shopCoins").textContent=state.coins;
- if(state.currentWorld){const done=state.completed[state.currentWorld].size;$("worldBar").style.width=(done/6*100)+"%";$("worldText").textContent=done+" / 6 stages"}
- renderWorldCards();
-}
-function renderWorldCards(){
- const grid=$("worldGrid");grid.innerHTML="";
- Object.entries(WORLDS).forEach(([id,w],idx)=>{
-   const done=state.completed[id].size;
-   const b=document.createElement("button");b.className="world-card";b.style.background=`linear-gradient(145deg,${w.color1},${w.color2})`;
-   b.innerHTML=`<div class="world-icon">${w.icon}</div><h2>World ${idx+1}</h2><p>${w.title}</p><p>${w.words.length} PDF words</p><div class="world-progress"><span style="width:${done/6*100}%"></span></div><div class="world-count">${done}/6 stages</div>`;
-   b.addEventListener("click",()=>openWorld(id));grid.appendChild(b);
- });
-}
-function openWorld(id){if(musicOn)startBgm();
- state.currentWorld=id;state.selected="rush";
- const w=current();document.documentElement.style.setProperty("--accent",w.color1);document.documentElement.style.setProperty("--accent2",w.color2);
- $("worldScreen").style.display="none";$("worldView").style.display="grid";$("mapTitle").textContent=w.title;$("mapSub").textContent=w.subtitle+" · "+w.words.length+" PDF words";
- $("pet").textContent=equippedEmoji();$("crystalName").textContent=w.icon+" Crystal";$("wordCount").textContent="PDF Vocabulary · "+w.words.length+" words";
- $("wordGridSide").innerHTML=w.words.map(x=>`<span class="chip">${x[0]}</span>`).join("");
- document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));document.querySelector('.stage[data-stage="rush"]').classList.add("active");
- $("stageTitle").textContent=modes.rush[0];$("stageDesc").textContent=modes.rush[1];$("playBtn").textContent="Play Word Rush";sync();
-}
-$("backBtn").addEventListener("click",()=>{$("worldView").style.display="none";$("worldScreen").style.display="block";state.currentWorld=null;sync()});
-document.querySelectorAll(".stage").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.selected=b.dataset.stage;$("stageTitle").textContent=modes[state.selected][0];$("stageDesc").textContent=modes[state.selected][1];$("playBtn").textContent="Play "+modes[state.selected][0]}));
-$("playBtn").addEventListener("click",startMode);$("closeBtn").addEventListener("click",closeGame);
-function randomWords(n){return shuffle(words()).slice(0,n)}
-function opts(item,english=false){const field=english?0:1;return shuffle([item[field],...shuffle(words().filter(w=>w[0]!==item[0])).slice(0,3).map(w=>w[field])])}
-function openGame(){$("overlay").style.display="flex";$("modeTitle").textContent=modes[state.selected][0];$("feedback").textContent="";$("bossWrap").style.display="none"}function closeGame(){clearInterval(state.timer);$("overlay").style.display="none";$("timer").textContent=""}
+const WORLDS={
+ w1:{title:"Home & Family",subtitle:"Everyday people and places",icon:"🏠",color1:"#7c3aed",color2:"#06b6d4",words:[["family","家庭"],["father","爸爸"],["mother","妈妈"],["brother","兄弟"],["sister","姐妹"],["home","家"],["room","房间"],["kitchen","厨房"],["garden","花园"],["door","门"]]},
+ w2:{title:"School",subtitle:"Learn, read and grow",icon:"🎒",color1:"#2563eb",color2:"#14b8a6",words:[["school","学校"],["teacher","老师"],["student","学生"],["book","书"],["pencil","铅笔"],["classroom","课室"],["lesson","课程"],["homework","功课"],["question","问题"],["answer","答案"]]},
+ w3:{title:"Food",subtitle:"Tasty vocabulary",icon:"🍎",color1:"#f97316",color2:"#eab308",words:[["food","食物"],["rice","米饭"],["bread","面包"],["milk","牛奶"],["water","水"],["fruit","水果"],["vegetable","蔬菜"],["breakfast","早餐"],["lunch","午餐"],["dinner","晚餐"]]},
+ w4:{title:"Animals",subtitle:"Wild and friendly",icon:"🦁",color1:"#16a34a",color2:"#84cc16",words:[["animal","动物"],["cat","猫"],["dog","狗"],["bird","鸟"],["fish","鱼"],["lion","狮子"],["tiger","老虎"],["elephant","大象"],["monkey","猴子"],["rabbit","兔子"]]},
+ w5:{title:"Places",subtitle:"Around the town",icon:"🏙️",color1:"#0ea5e9",color2:"#8b5cf6",words:[["place","地方"],["park","公园"],["shop","商店"],["market","市场"],["hospital","医院"],["library","图书馆"],["station","车站"],["road","道路"],["city","城市"],["village","乡村"]]},
+ w6:{title:"Colours",subtitle:"A bright world",icon:"🎨",color1:"#ec4899",color2:"#8b5cf6",words:[["red","红色"],["blue","蓝色"],["green","绿色"],["yellow","黄色"],["black","黑色"],["white","白色"],["orange","橙色"],["purple","紫色"],["pink","粉红色"],["brown","棕色"]]},
+ w7:{title:"Numbers",subtitle:"Count your way forward",icon:"🔢",color1:"#6366f1",color2:"#06b6d4",words:[["one","一"],["two","二"],["three","三"],["four","四"],["five","五"],["six","六"],["seven","七"],["eight","八"],["nine","九"],["ten","十"]]},
+ w8:{title:"Time",subtitle:"Days, clocks and routines",icon:"🕒",color1:"#9333ea",color2:"#3b82f6",words:[["time","时间"],["day","天"],["week","星期"],["month","月"],["year","年"],["morning","早上"],["afternoon","下午"],["evening","傍晚"],["night","晚上"],["today","今天"]]},
+ w9:{title:"Weather",subtitle:"Sky and seasons",icon:"🌦️",color1:"#0284c7",color2:"#22c55e",words:[["weather","天气"],["sunny","晴朗"],["rainy","下雨"],["cloudy","多云"],["windy","有风"],["hot","热"],["cold","冷"],["storm","暴风雨"],["sky","天空"],["season","季节"]]},
+ w10:{title:"Nature",subtitle:"The world outside",icon:"🌳",color1:"#15803d",color2:"#65a30d",words:[["nature","大自然"],["tree","树"],["flower","花"],["river","河"],["mountain","山"],["sea","海"],["forest","森林"],["grass","草"],["stone","石头"],["earth","地球"]]},
+ w11:{title:"Body",subtitle:"Know yourself",icon:"🧍",color1:"#db2777",color2:"#f97316",words:[["body","身体"],["head","头"],["hand","手"],["leg","腿"],["eye","眼睛"],["ear","耳朵"],["nose","鼻子"],["mouth","嘴巴"],["hair","头发"],["face","脸"]]},
+ w12:{title:"Clothes",subtitle:"What we wear",icon:"👕",color1:"#7c3aed",color2:"#ec4899",words:[["clothes","衣服"],["shirt","衬衫"],["dress","连衣裙"],["shoes","鞋子"],["hat","帽子"],["jacket","夹克"],["socks","袜子"],["skirt","裙子"],["trousers","长裤"],["coat","外套"]]},
+ w13:{title:"Transport",subtitle:"Move around",icon:"🚗",color1:"#2563eb",color2:"#f59e0b",words:[["transport","交通"],["car","汽车"],["bus","巴士"],["train","火车"],["bicycle","脚车"],["plane","飞机"],["boat","船"],["taxi","德士"],["road","道路"],["travel","旅行"]]},
+ w14:{title:"Technology",subtitle:"Digital vocabulary",icon:"💻",color1:"#0f766e",color2:"#6366f1",words:[["technology","科技"],["computer","电脑"],["phone","电话"],["internet","互联网"],["screen","屏幕"],["keyboard","键盘"],["mouse","鼠标"],["camera","相机"],["video","视频"],["message","信息"]]},
+ w15:{title:"Daily Actions",subtitle:"Verbs for everyday life",icon:"🏃",color1:"#ea580c",color2:"#16a34a",words:[["eat","吃"],["drink","喝"],["sleep","睡觉"],["read","阅读"],["write","写"],["run","跑"],["walk","走"],["play","玩"],["study","学习"],["help","帮助"]]}
+};
+const modes={rush:["Word Rush","Choose the correct Chinese meaning."],clue:["Clue Hunt","Choose the correct English word."],memory:["Memory Match","Match English and Chinese pairs."],spell:["Spell Forge","Type the full English word."],speed:["Speed Trial","Answer every word as quickly as possible."],boss:["World Boss","Defeat the boss with correct answers."]};
+const state={xp:0,coins:0,lives:3,currentWorld:null,selected:"rush",completed:{},index:0,score:0,wrongLog:[],questions:[],locked:false,timer:null,time:0,bossHP:0,equippedPet:"dog",ownedPets:new Set(["dog"])};
+Object.keys(WORLDS).forEach(k=>state.completed[k]=new Set());
+let musicOn=true,audioCtx=null,bgmTimer=null,bgmStep=0;
+function tone(freq,dur=.12,type="sine",vol=.08){try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.value=vol;o.connect(g);g.connect(audioCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function startBgm(){if(!musicOn||bgmTimer)return;bgmTimer=setInterval(()=>{const notes=[262,330,392,523,392,330,294,349,440,587,440,349];tone(notes[bgmStep++%notes.length],.28,"triangle",.045)},320)}
+function toggleMusic(){musicOn=!musicOn;$("musicBtn").textContent="Music: "+(musicOn?"ON":"OFF");if(musicOn)startBgm();else{clearInterval(bgmTimer);bgmTimer=null}}
+function playScoreSound(){tone(660,.09,"square",.09);setTimeout(()=>tone(880,.12,"square",.08),90)}
+function playDamageSound(){tone(180,.18,"sawtooth",.13);setTimeout(()=>tone(110,.24,"sawtooth",.1),130)}
+function playAttackSound(){tone(520,.07,"square",.12);setTimeout(()=>tone(740,.09,"square",.1),70)}
+function playBossSound(){tone(110,.25,"sawtooth",.1);setTimeout(()=>tone(147,.25,"sawtooth",.1),220)}
+const PET_SHOP=[{id:"dog",name:"Adventure Dog",emoji:"🐶",price:0},{id:"cat",name:"Lucky Cat",emoji:"🐱",price:300},{id:"owl",name:"Wise Owl",emoji:"🦉",price:500},{id:"fox",name:"Fire Fox",emoji:"🦊",price:900},{id:"unicorn",name:"Rainbow Unicorn",emoji:"🦄",price:1300},{id:"dragon",name:"Sky Dragon",emoji:"🐉",price:1800},{id:"phoenix",name:"Golden Phoenix",emoji:"🔥",price:2400},{id:"tiger",name:"Thunder Tiger",emoji:"🐯",price:3000}];
+const CORRECT_EFFECTS=[{title:"DRAGON POWER!",creature:"🐉",particles:["🔥","✨","💥"]},{title:"PHOENIX BURST!",creature:"🦅",particles:["🔥","⭐","✨"]},{title:"THUNDER STRIKE!",creature:"⚡",particles:["⚡","💥","✨"]},{title:"TIGER ROAR!",creature:"🐯",particles:["💥","⭐","🔥"]},{title:"UNICORN MAGIC!",creature:"🦄",particles:["🌈","✨","⭐"]},{title:"PERFECT COMBO!",creature:"💎",particles:["💎","⭐","✨"]}];
+const WRONG_EFFECTS=[{id:"swallow",title:"MONSTER SWALLOWED YOU!"},{id:"fire",title:"FIREBALL HIT!"},{id:"lightning",title:"THUNDER DAMAGE!"},{id:"ice",title:"FROZEN!"},{id:"trap",title:"TRAP ACTIVATED!"},{id:"knock",title:"KNOCKED AWAY!"}];
+function showWrongEffect(){const fx=$("wrongFx"),e=WRONG_EFFECTS[Math.floor(Math.random()*WRONG_EFFECTS.length)];let scene='<div class="screen-shock"></div><div class="wrong-title">'+e.title+'</div><div class="fx-heart">💔</div>';if(e.id==="swallow")scene+='<div class="fx-player swallowed-player">🧑</div><div class="fx-monster swallow-monster">👾</div>';else if(e.id==="fire")scene+='<div class="fx-player">🧑</div><div class="fireball">🔥</div><div class="fx-damage">💥</div>';else if(e.id==="lightning")scene+='<div class="fx-player">🧑</div><div class="lightning">⚡</div><div class="fx-damage">💫</div>';else if(e.id==="ice")scene+='<div class="fx-player">🧑</div><div class="ice-prison">🧊</div>';else if(e.id==="trap")scene+='<div class="trap-hole">🕳️</div><div class="fx-player fall-player">🧑</div>';else scene+='<div class="fx-monster knock-monster">🦬</div><div class="fx-player knocked-player">🧑</div><div class="fx-damage">💥</div>';fx.innerHTML=scene;fx.classList.remove("show");void fx.offsetWidth;fx.classList.add("show");setTimeout(()=>{fx.classList.remove("show");fx.innerHTML=""},1250)}
+function equippedEmoji(){const pet=PET_SHOP.find(p=>p.id===state.equippedPet);return pet?pet.emoji:"🐶"}
+function showCorrectEffect(){const fx=$("correctFx"),e=CORRECT_EFFECTS[Math.floor(Math.random()*CORRECT_EFFECTS.length)];fx.innerHTML='<div class="fx-flash"></div><div class="fx-ring"></div><div class="fx-title">'+e.title+'</div><div class="fx-creature">'+e.creature+'</div>';for(let i=0;i<18;i++){const p=document.createElement("div");p.className="fx-particle";p.textContent=e.particles[i%e.particles.length];p.style.left=(45+Math.random()*10)+"%";p.style.top=(42+Math.random()*16)+"%";p.style.setProperty("--dx",((Math.random()-.5)*900)+"px");p.style.setProperty("--dy",((Math.random()-.5)*650)+"px");fx.appendChild(p)}fx.classList.remove("show");void fx.offsetWidth;fx.classList.add("show");setTimeout(()=>{fx.classList.remove("show");fx.innerHTML=""},1100)}
+function renderPetShop(){$("shopCoins").textContent=state.coins;$("petGrid").innerHTML="";PET_SHOP.forEach(p=>{const owned=state.ownedPets.has(p.id),equipped=state.equippedPet===p.id,card=document.createElement("div");card.className="pet-card"+(owned?" owned":"")+(equipped?" equipped":"");const label=equipped?"Equipped":owned?"Equip":"Buy";card.innerHTML=`<div class="pet-emoji">${p.emoji}</div><div class="pet-name">${p.name}</div><div class="pet-price">${p.price===0?"Starter Pet":"🪙 "+p.price}</div><button class="pet-action" ${equipped?"disabled":""}>${label}</button>`;card.querySelector("button").addEventListener("click",()=>{if(owned){state.equippedPet=p.id;$("pet").textContent=p.emoji;renderPetShop();$("status").textContent=p.name+" is now following you."}else if(state.coins>=p.price){state.coins-=p.price;state.ownedPets.add(p.id);state.equippedPet=p.id;$("pet").textContent=p.emoji;sync();renderPetShop();showCorrectEffect();$("status").textContent="Unlocked "+p.name+"!"}else{$("status").textContent="Not enough coins for "+p.name+".";const btn=card.querySelector("button");btn.textContent="Need "+(p.price-state.coins)+" more";setTimeout(renderPetShop,900)}});$("petGrid").appendChild(card)})}
+$("shopBtn").addEventListener("click",()=>{$("shopOverlay").style.display="flex";renderPetShop()});$("shopClose").addEventListener("click",()=>{$("shopOverlay").style.display="none"});$("shopOverlay").addEventListener("click",e=>{if(e.target===$("shopOverlay"))$("shopOverlay").style.display="none"});
+function current(){return WORLDS[state.currentWorld]} function words(){return current().words} function totalDone(){return Object.values(state.completed).reduce((n,s)=>n+s.size,0)}
+function sync(){$("xp").textContent=state.xp;$("coins").textContent=state.coins;$("lives").textContent=state.lives;$("totalCrystals").textContent=totalDone();if($("shopCoins"))$("shopCoins").textContent=state.coins;if(state.currentWorld){const done=state.completed[state.currentWorld].size;$("worldBar").style.width=(done/6*100)+"%";$("worldText").textContent=done+" / 6 stages"}renderWorldCards()}
+function renderWorldCards(){const grid=$("worldGrid");grid.innerHTML="";Object.entries(WORLDS).forEach(([id,w],idx)=>{const done=state.completed[id].size,b=document.createElement("button");b.className="world-card";b.style.background=`linear-gradient(145deg,${w.color1},${w.color2})`;b.innerHTML=`<div class="world-icon">${w.icon}</div><h2>World ${idx+1}</h2><p>${w.title}</p><p>${w.words.length} PDF words</p><div class="world-progress"><span style="width:${done/6*100}%"></span></div><div class="world-count">${done}/6 stages</div>`;b.addEventListener("click",()=>openWorld(id));grid.appendChild(b)})}
+function openWorld(id){if(musicOn)startBgm();state.currentWorld=id;state.selected="rush";const w=current();document.documentElement.style.setProperty("--accent",w.color1);document.documentElement.style.setProperty("--accent2",w.color2);$("worldScreen").style.display="none";$("worldView").style.display="grid";$("mapTitle").textContent=w.title;$("mapSub").textContent=w.subtitle+" · "+w.words.length+" PDF words";$("pet").textContent=equippedEmoji();$("crystalName").textContent=w.icon+" Crystal";$("wordCount").textContent="PDF Vocabulary · "+w.words.length+" words";$("wordGridSide").innerHTML=w.words.map(x=>`<span class="chip">${x[0]}</span>`).join("");document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));document.querySelector('.stage[data-stage="rush"]').classList.add("active");$("stageTitle").textContent=modes.rush[0];$("stageDesc").textContent=modes.rush[1];$("playBtn").textContent="Play Word Rush";sync()}
+$("backBtn").addEventListener("click",()=>{$("worldView").style.display="none";$("worldScreen").style.display="block";state.currentWorld=null;sync()});document.querySelectorAll(".stage").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.selected=b.dataset.stage;$("stageTitle").textContent=modes[state.selected][0];$("stageDesc").textContent=modes[state.selected][1];$("playBtn").textContent="Play "+modes[state.selected][0]}));$("playBtn").addEventListener("click",startMode);$("closeBtn").addEventListener("click",closeGame);
+function randomWords(n){return shuffle(words()).slice(0,n)} function opts(item,english=false){const field=english?0:1;return shuffle([item[field],...shuffle(words().filter(w=>w[0]!==item[0])).slice(0,3).map(w=>w[field])])}
+function openGame(){$("overlay").style.display="flex";$("modeTitle").textContent=modes[state.selected][0];$("feedback").textContent="";$("bossWrap").style.display="none"} function closeGame(){clearInterval(state.timer);$("overlay").style.display="none";$("timer").textContent=""}
 function startMode(){state.index=0;state.score=0;state.wrongLog=[];state.lives=3;state.locked=false;sync();openGame();if(state.selected==="memory")startMemory();else if(state.selected==="spell")startSpell();else if(state.selected==="speed")startSpeed();else if(state.selected==="boss")startBoss();else{state.questions=shuffle(words());showStandard()}}
 function showStandard(){state.locked=false;const item=state.questions[state.index];$("qnum").textContent=(state.index+1)+" / "+state.questions.length;const english=state.selected==="clue";$("gameArea").innerHTML=`<div class="q">${english?item[1]:item[0]}</div><div class="hint">${english?"选择正确的英文词汇":"选择正确的华语意思"}</div><div class="answers">${opts(item,english).map(o=>`<button class="answer">${o}</button>`).join("")}</div>`;document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>check(b,b.textContent,item,english)))}
-function check(btn,val,item,english){if(state.locked)return;state.locked=true;const correct=item[english?0:1];if(val===correct){btn.classList.add("good");reward(20,10);$("feedback").textContent="Correct! +20 XP";$("feedback").style.color="var(--good)";setTimeout(()=>{state.index++;state.index>=state.questions.length?complete():showStandard()},600)}else{
-btn.classList.add("bad");
-state.xp=Math.max(0,state.xp-10);state.coins=Math.max(0,state.coins-5);
-state.wrongLog.push({q:item[0],your:val,correct:correct});
-lose();sync();
-$("feedback").textContent="Correct: "+correct;
-$("feedback").style.color="var(--bad)";
-setTimeout(()=>{state.index++;state.index>=state.questions.length?complete():showStandard()},1200)
-}}
-function startMemory(){const chosen=shuffle(words()),cards=shuffle(chosen.flatMap(w=>[{p:w[0],t:w[0]},{p:w[0],t:w[1]}]));let open=[],matched=0;$("qnum").textContent="Match all "+chosen.length+" pairs";$("gameArea").innerHTML=`<div class="q">Memory Match</div><div class="hint">Match English with Chinese.</div><div class="memorygrid">${cards.map(c=>`<button class="memory hidden" data-p="${c.p}">${c.t}</button>`).join("")}</div>`;document.querySelectorAll(".memory").forEach(c=>c.addEventListener("click",()=>{if(c.classList.contains("good")||open.includes(c)||open.length===2)return;c.classList.remove("hidden");open.push(c);if(open.length===2){if(open[0].dataset.p===open[1].dataset.p){open.forEach(x=>x.classList.add("good"));open=[];matched++;reward(15,5);if(matched===chosen.length)setTimeout(complete,450)}else setTimeout(()=>{open.forEach(x=>x.classList.add("hidden"));open=[]},650)}}))}
-function startSpell(){
- state.questions=shuffle(words());
- state.index=0;
- showSpell();
-}
-function showSpell(){
- if(state.index>=state.questions.length){complete();return}
- const item=state.questions[state.index];
- const word=item[0];
- state.locked=false;
- $("qnum").textContent=(state.index+1)+" / "+state.questions.length;
- $("gameArea").innerHTML=`
-   <div class="q">${item[1]}</div>
-   <div class="hint">根据华语，拼写完整英文词汇。</div>
-   <input id="spellingInput" class="spelling-input" type="text"
-          autocomplete="off" autocapitalize="none" spellcheck="false"
-          placeholder="Type the full English word">
-   <button id="spellingSubmit" class="btn spelling-submit">Submit</button>`;
- const input=$("spellingInput");
- const submit=$("spellingSubmit");
- input.focus();
- function submitSpelling(){
-   if(state.locked)return;
-   const typed=input.value.trim();
-   if(!typed)return;
-   state.locked=true;
-   input.disabled=true;
-   submit.disabled=true;
-   const isCorrect=typed.toLowerCase()===word.toLowerCase();
-   if(isCorrect){
-     input.classList.add("good");
-     reward(25,10);
-     $("feedback").textContent="Correct spelling: "+word;
-     $("feedback").style.color="var(--good)";
-   }else{
-     input.classList.add("bad");
-     state.xp=Math.max(0,state.xp-10);
-     state.coins=Math.max(0,state.coins-5);
-     state.wrongLog.push({q:item[1],your:typed,correct:word});
-     lose();
-     sync();
-     $("feedback").textContent="Correct answer: "+word;
-     $("feedback").style.color="var(--bad)";
-   }
-   setTimeout(()=>{state.index++;showSpell()},1200);
- }
- submit.addEventListener("click",submitSpelling);
- input.addEventListener("keydown",e=>{
-   if(e.key==="Enter")submitSpelling();
- });
-}
-function startSpeed(){state.time=0;state.questions=shuffle(words());state.index=0;$("timer").textContent="0s";state.timer=setInterval(()=>{state.time++;$("timer").textContent=state.time+"s"},1000);showSpeed()}function showSpeed(){if(state.index>=state.questions.length){clearInterval(state.timer);complete();return}state.locked=false;const item=state.questions[state.index];$("qnum").textContent=(state.index+1)+" / "+state.questions.length;$("gameArea").innerHTML=`<div class="q">${item[0]}</div><div class="hint">快速选择正确意思</div><div class="answers">${opts(item).map(o=>`<button class="answer">${o}</button>`).join("")}</div>`;document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>{if(state.locked)return;state.locked=true;if(b.textContent===item[1]){b.classList.add("good");state.score++;reward(8,3);state.index++;setTimeout(showSpeed,220)}else{b.classList.add("bad");lose();$("feedback").textContent="Correct answer: "+item[1];setTimeout(()=>{state.index++;showSpeed()},1150)}}))}
-function startBoss(){playBossSound();state.questions=shuffle(words());state.index=0;state.bossHP=state.questions.length;$("bossWrap").style.display="block";$("bossHp").style.width="100%";showBoss()}function showBoss(){if(state.index>=state.questions.length){setTimeout(complete,350);return}state.locked=false;const item=state.questions[state.index];$("qnum").textContent="Boss attack "+(state.index+1)+" / "+state.questions.length;$("gameArea").innerHTML=`<div class="q">${item[0]}</div><div class="hint">Choose correctly to attack the World Boss.</div><div class="answers">${opts(item).map(o=>`<button class="answer">${o}</button>`).join("")}</div>`;document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>{if(state.locked)return;state.locked=true;if(b.textContent===item[1]){b.classList.add("good");state.bossHP--;const pct=(state.bossHP/state.questions.length)*100;$("bossHp").style.width=pct+"%";reward(30,15);$("feedback").textContent="Critical hit!";playAttackSound();state.index++;setTimeout(showBoss,420)}else{b.classList.add("bad");lose();$("gamebox").classList.add("shake");setTimeout(()=>$("gamebox").classList.remove("shake"),320);$("feedback").textContent="Correct answer: "+item[1];state.index++;setTimeout(showBoss,1200)}}))}
-function reward(x,c){state.xp+=x;state.coins+=c;sync();playScoreSound();showCorrectEffect()}function lose(){playDamageSound();showWrongEffect();state.lives=Math.max(0,state.lives-1);sync();}
-function complete(){clearInterval(state.timer);const set=state.completed[state.currentWorld];if(!set.has(state.selected)){set.add(state.selected);state.xp+=100;state.coins+=50}
-sync();
-const total=state.questions.length||1,wrong=state.wrongLog.length,correct=total-wrong,acc=Math.round(correct/total*100);
-let review=state.wrongLog.length?state.wrongLog.map((x,i)=>`<div style="text-align:left;padding:8px;border-bottom:1px solid #ddd"><b>Q${i+1}</b> ${x.q}<br>Your: <span style="color:#dc2626">${x.your}</span><br>Correct: <span style="color:#16a34a">${x.correct}</span></div>`).join(""):"<p>Perfect! No mistakes.</p>";
-$("gameArea").innerHTML=`<div class="q">Battle Report</div><div class="hint">Correct ${correct}/${total} · Accuracy ${acc}%</div><div class="hint">XP +100 · Coins +50</div><h3>Mistake Review</h3><div style="max-height:260px;overflow:auto">${review}</div><button class="btn" id="returnBtn">Return to World Map</button>`;
-$("feedback").textContent=wrong?("Review "+wrong+" mistakes."):"Perfect Clear!";$("feedback").style.color="var(--good)";$("returnBtn").addEventListener("click",closeGame);$("status").textContent=modes[state.selected][0]+" completed."}
-if(document.getElementById("musicBtn"))document.getElementById("musicBtn").addEventListener("click",toggleMusic);
-renderWorldCards();sync();$("pet").textContent=equippedEmoji();
+function check(btn,val,item,english){if(state.locked)return;state.locked=true;const correct=item[english?0:1];if(val===correct){btn.classList.add("good");state.score++;reward(20,10);$("feedback").textContent="Correct! +20 XP";$("feedback").style.color="var(--good)";setTimeout(()=>{state.index++;state.index>=state.questions.length?complete():showStandard()},600)}else{btn.classList.add("bad");state.xp=Math.max(0,state.xp-10);state.coins=Math.max(0,state.coins-5);state.wrongLog.push({q:item[0],your:val,correct:correct});lose();sync();$("feedback").textContent="Correct: "+correct;$("feedback").style.color="var(--bad)";setTimeout(()=>{state.index++;state.index>=state.questions.length?complete():showStandard()},1200)}}
+function startMemory(){const chosen=shuffle(words()),cards=shuffle(chosen.flatMap(w=>[{p:w[0],t:w[0]},{p:w[0],t:w[1]}]));state.questions=chosen;let open=[],matched=0;$("qnum").textContent="Match all "+chosen.length+" pairs";$("gameArea").innerHTML=`<div class="q">Memory Match</div><div class="hint">Match English with Chinese.</div><div class="memorygrid">${cards.map(c=>`<button class="memory hidden" data-p="${c.p}">${c.t}</button>`).join("")}</div>`;document.querySelectorAll(".memory").forEach(c=>c.addEventListener("click",()=>{if(c.classList.contains("good")||open.includes(c)||open.length===2)return;c.classList.remove("hidden");open.push(c);if(open.length===2){if(open[0].dataset.p===open[1].dataset.p){open.forEach(x=>x.classList.add("good"));open=[];matched++;state.score++;reward(15,5);if(matched===chosen.length)setTimeout(complete,450)}else{state.wrongLog.push({q:open[0].textContent+" + "+open[1].textContent,your:"Wrong pair",correct:"Match the correct English and Chinese pair"});lose();setTimeout(()=>{open.forEach(x=>x.classList.add("hidden"));open=[]},650)}}}))}
+function startSpell(){state.questions=shuffle(words());state.index=0;showSpell()}
+function showSpell(){if(state.index>=state.questions.length){complete();return}const item=state.questions[state.index],word=item[0];state.locked=false;$("qnum").textContent=(state.index+1)+" / "+state.questions.length;$("gameArea").innerHTML=`<div class="q">${item[1]}</div><div class="hint">根据华语，拼写完整英文词汇。</div><input id="spellingInput" class="spelling-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Type the full English word"><button id="spellingSubmit" class="btn spelling-submit">Submit</button>`;const input=$("spellingInput"),submit=$("spellingSubmit");input.focus();function submitSpelling(){if(state.locked)return;const typed=input.value.trim();if(!typed)return;state.locked=true;input.disabled=true;submit.disabled=true;const isCorrect=typed.toLowerCase()===word.toLowerCase();if(isCorrect){input.classList.add("good");state.score++;reward(25,10);$("feedback").textContent="Correct spelling: "+word;$("feedback").style.color="var(--good)"}else{input.classList.add("bad");state.xp=Math.max(0,state.xp-10);state.coins=Math.max(0,state.coins-5);state.wrongLog.push({q:item[1],your:typed,correct:word});lose();sync();$("feedback").textContent="Correct answer: "+word;$("feedback").style.color="var(--bad)"}setTimeout(()=>{state.index++;showSpell()},1200)}submit.addEventListener("click",submitSpelling);input.addEventListener("keydown",e=>{if(e.key==="Enter")submitSpelling()})}
+function startSpeed(){state.time=0;state.questions=shuffle(words());state.index=0;$("timer").textContent="0s";state.timer=setInterval(()=>{state.time++;$("timer").textContent=state.time+"s"},1000);showSpeed()}
+function showSpeed(){if(state.index>=state.questions.length){clearInterval(state.timer);complete();return}state.locked=false;const item=state.questions[state.index];$("qnum").textContent=(state.index+1)+" / "+state.questions.length;$("gameArea").innerHTML=`<div class="q">${item[0]}</div><div class="hint">快速选择正确意思</div><div class="answers">${opts(item).map(o=>`<button class="answer">${o}</button>`).join("")}</div>`;document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>{if(state.locked)return;state.locked=true;if(b.textContent===item[1]){b.classList.add("good");state.score++;reward(8,3);state.index++;setTimeout(showSpeed,220)}else{b.classList.add("bad");state.wrongLog.push({q:item[0],your:b.textContent,correct:item[1]});lose();$("feedback").textContent="Correct answer: "+item[1];setTimeout(()=>{state.index++;showSpeed()},1150)}}))}
+function startBoss(){playBossSound();state.questions=shuffle(words());state.index=0;state.bossHP=state.questions.length;$("bossWrap").style.display="block";$("bossHp").style.width="100%";showBoss()}
+function showBoss(){if(state.index>=state.questions.length){setTimeout(complete,350);return}state.locked=false;const item=state.questions[state.index];$("qnum").textContent="Boss attack "+(state.index+1)+" / "+state.questions.length;$("gameArea").innerHTML=`<div class="q">${item[0]}</div><div class="hint">Choose correctly to attack the World Boss.</div><div class="answers">${opts(item).map(o=>`<button class="answer">${o}</button>`).join("")}</div>`;document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>{if(state.locked)return;state.locked=true;if(b.textContent===item[1]){b.classList.add("good");state.score++;state.bossHP--;const pct=(state.bossHP/state.questions.length)*100;$("bossHp").style.width=pct+"%";reward(30,15);$("feedback").textContent="Critical hit!";playAttackSound();state.index++;setTimeout(showBoss,420)}else{b.classList.add("bad");state.wrongLog.push({q:item[0],your:b.textContent,correct:item[1]});lose();$("gamebox").classList.add("shake");setTimeout(()=>$("gamebox").classList.remove("shake"),320);$("feedback").textContent="Correct answer: "+item[1];state.index++;setTimeout(showBoss,1200)}}))}
+function reward(x,c){state.xp+=x;state.coins+=c;sync();playScoreSound();showCorrectEffect()} function lose(){playDamageSound();showWrongEffect();state.lives=Math.max(0,state.lives-1);sync()}
+function speakWorldSummary(correct,wrong,score){if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const worldNumber=Object.keys(WORLDS).indexOf(state.currentWorld)+1;const text=`World ${worldNumber} complete. You got ${correct} correct, ${wrong} wrong, and your score is ${score} percent.`;const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.88;u.pitch=1.05;u.volume=1;const voices=window.speechSynthesis.getVoices();const preferred=voices.find(v=>/en-US/i.test(v.lang)&&/female|zira|samantha|google us english/i.test(v.name))||voices.find(v=>/en-US/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));if(preferred)u.voice=preferred;window.speechSynthesis.speak(u)}
+function complete(){clearInterval(state.timer);const set=state.completed[state.currentWorld];if(!set.has(state.selected)){set.add(state.selected);state.xp+=100;state.coins+=50}sync();const total=state.questions.length||1,wrong=Math.min(state.wrongLog.length,total),correct=Math.max(0,total-wrong),acc=Math.round(correct/total*100);let review=state.wrongLog.length?state.wrongLog.map((x,i)=>`<div style="text-align:left;padding:8px;border-bottom:1px solid #ddd"><b>Q${i+1}</b> ${x.q}<br>Your: <span style="color:#dc2626">${x.your}</span><br>Correct: <span style="color:#16a34a">${x.correct}</span></div>`).join(""):"<p>Perfect! No mistakes.</p>";$("gameArea").innerHTML=`<div class="q">Battle Report</div><div class="hint">Correct ${correct}/${total} · Wrong ${wrong} · Score ${acc}%</div><div class="hint">XP +100 · Coins +50</div><h3>Mistake Review</h3><div style="max-height:260px;overflow:auto">${review}</div><button class="btn" id="returnBtn">Return to World Map</button>`;$("feedback").textContent=wrong?("Review "+wrong+" mistakes."):"Perfect Clear!";$("feedback").style.color="var(--good)";$("returnBtn").addEventListener("click",closeGame);$("status").textContent=modes[state.selected][0]+" completed.";setTimeout(()=>speakWorldSummary(correct,wrong,acc),250)}
+if(document.getElementById("musicBtn"))document.getElementById("musicBtn").addEventListener("click",toggleMusic);renderWorldCards();sync();$("pet").textContent=equippedEmoji();
 </script>
 </body>
 </html>
